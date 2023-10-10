@@ -1,4 +1,6 @@
-﻿using VasaCSharp.Random;
+﻿using Microsoft.Extensions.DependencyInjection;
+using VasaCSharp.Random;
+using VasaCSharp.Random.Interface;
 
 namespace VasaCSharp
 {
@@ -6,7 +8,14 @@ namespace VasaCSharp
     {
         public static void Main()
         {
-            RandomPasswordGenerate.RandomPasswordGenerator();
+            var serviceProvider = Startup.ConfigureServices();
+            var passwordGenerator = serviceProvider.GetRequiredService<IRandomPasswordGenerator>();
+            
+            // Grab the passwordLength from user Input.
+            passwordGenerator.GetValidUserInput(out var passwordLength);           
+                                                     
+            // Generates password using Random Chars.
+            passwordGenerator.GenerateRandomPassword(passwordLength);              
         }
     }
 }

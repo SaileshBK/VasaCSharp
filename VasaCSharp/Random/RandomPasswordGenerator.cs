@@ -1,20 +1,13 @@
 ﻿using System.Text;
+using VasaCSharp.Random.Interface;
 
 namespace VasaCSharp.Random;
 
-public static class RandomPasswordGenerate
+public class RandomPasswordGenerator : IRandomPasswordGenerator
 {
     private const string Chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
 
-    public static void RandomPasswordGenerator()
-    {
-        // Method to grab the passwordLength from user Input.
-        GetValidUserInput(out var passwordLength);
-        
-        // Method that generates password using Random Chars.
-        GenerateRandomPassword(passwordLength);
-    }
-    static void GetValidUserInput(out int userInput)
+    public void GetValidUserInput(out int userInput)
     {
         while (true)
         {
@@ -27,7 +20,7 @@ public static class RandomPasswordGenerate
         }
     }
 
-    static void GenerateRandomPassword(int passwordLength)
+    public void GenerateRandomPassword(int passwordLength)
     {
         var random = new System.Random();
         var password = new StringBuilder();
