@@ -1,5 +1,6 @@
 ﻿using System.Text;
 using VasaCSharp.Random.Interface;
+using VasaCSharp.Random.Utilities;
 
 namespace VasaCSharp.Random;
 
@@ -11,7 +12,7 @@ public class RandomPasswordGenerator : IRandomPasswordGenerator
     {
         while (true)
         {
-            Console.WriteLine("Please, Enter the length of the Password: ");
+            Custom.WriteLine("Please, Enter the length of the Password: ");
 
             if (int.TryParse(Console.ReadLine(), out userInput) && userInput > 0)
             {
@@ -31,7 +32,7 @@ public class RandomPasswordGenerator : IRandomPasswordGenerator
             password.Append(Chars[index]);
         }
 
-        Console.WriteLine(password.ToString());
+        Custom.WriteLine(password.ToString());
     }
 
     private string EndMessage()
