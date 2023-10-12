@@ -20,7 +20,7 @@ namespace VasaCSharp
             
             // Testing New Way Of Calling Private Methods in .Net 8
             var randomPasswordGenerator = new RandomPasswordGenerator();
-            Console.WriteLine(Accessor.GetEndMessageMethod(randomPasswordGenerator));
+            Custom.WriteLine(Accessor.GetEndMessageMethod(randomPasswordGenerator));
         }
     }
 }
