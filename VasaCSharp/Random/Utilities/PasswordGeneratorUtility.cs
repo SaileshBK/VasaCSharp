@@ -11,5 +11,9 @@ public static class PasswordGeneratorUtility
                                                      
         // Generates password using Random Chars.
         Custom.WriteLine(passwordGenerator.GenerateRandomPassword(passwordLength));
+        
+        // Testing New Way Of Calling Private Methods in .Net 8
+        var randomPasswordGenerator = new PasswordGenerator();
+        Custom.WriteLine(Accessor.GetEndMessageMethod(randomPasswordGenerator));
     }
 }
