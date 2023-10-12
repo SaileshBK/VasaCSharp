@@ -11,12 +11,7 @@ namespace VasaCSharp
         {
             var serviceProvider = Startup.ConfigureServices();
             var passwordGenerator = serviceProvider.GetRequiredService<IPasswordGenerator>();
-            
-            // Grab the passwordLength from user Input.
-            passwordGenerator.GetValidUserInput(out var passwordLength);           
-                                                     
-            // Generates password using Random Chars.
-            Custom.WriteLine(passwordGenerator.GenerateRandomPassword(passwordLength));
+            PasswordGeneratorUtility.Generate(passwordGenerator);
             
             // Testing New Way Of Calling Private Methods in .Net 8
             var randomPasswordGenerator = new PasswordGenerator();
