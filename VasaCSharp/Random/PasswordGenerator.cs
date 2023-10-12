@@ -4,7 +4,7 @@ using VasaCSharp.Random.Utilities;
 
 namespace VasaCSharp.Random;
 
-public class RandomPasswordGenerator : IRandomPasswordGenerator
+public class PasswordGenerator : IPasswordGenerator
 {
     private const string Chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
 
@@ -21,7 +21,7 @@ public class RandomPasswordGenerator : IRandomPasswordGenerator
         }
     }
 
-    public void GenerateRandomPassword(int passwordLength)
+    public string GenerateRandomPassword(int passwordLength)
     {
         var random = new System.Random();
         var password = new StringBuilder();
@@ -32,7 +32,7 @@ public class RandomPasswordGenerator : IRandomPasswordGenerator
             password.Append(Chars[index]);
         }
 
-        Custom.WriteLine(password.ToString());
+        return password.ToString();
     }
 
     private string EndMessage()

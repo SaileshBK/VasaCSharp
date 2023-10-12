@@ -4,7 +4,7 @@ namespace VasaCSharp.Random.Utilities;
 
 public static class Accessor
 {
-    // Using UnsafeAccessor to access EndMessage private method in .net 8 
+    // Using UnsafeAccessor to access EndMessage private method
     [UnsafeAccessor(UnsafeAccessorKind.Method, Name = "EndMessage")]
-    public static extern string GetEndMessageMethod(RandomPasswordGenerator randomPasswordGenerator);
+    public static extern string GetEndMessageMethod(PasswordGenerator passwordGenerator);
 }
