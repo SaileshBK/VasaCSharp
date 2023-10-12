@@ -9,7 +9,7 @@ public static class Startup
     public static ServiceProvider ConfigureServices()
     {
         var serviceProvider = new ServiceCollection()
-            .AddTransient<IRandomPasswordGenerator, RandomPasswordGenerator>()
+            .AddTransient<IPasswordGenerator, PasswordGenerator>()
             .BuildServiceProvider();
         return serviceProvider;
     }
