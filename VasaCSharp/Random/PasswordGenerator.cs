@@ -6,8 +6,6 @@ namespace VasaCSharp.Random;
 
 public class PasswordGenerator : IPasswordGenerator
 {
-    private const string Chars = "abcdefghijklmnopqrstuvwxyzABCDEFGHIJKLMNOPQRSTUVWXYZ0123456789!@#$%^&*()_+";
-
     public void GetValidUserInput(out int userInput)
     {
         while (true)
@@ -25,11 +23,12 @@ public class PasswordGenerator : IPasswordGenerator
     {
         var random = new System.Random();
         var password = new StringBuilder();
+        const string chars = Constants.Chars;
 
         for (var i = 0; i < passwordLength; i++)
         {
-            var index = random.Next(Chars.Length);
-            password.Append(Chars[index]);
+            var index = random.Next(chars.Length);
+            password.Append(chars[index]);
         }
 
         return password.ToString();
