@@ -33,4 +33,9 @@ public class RandomPasswordGenerator : IRandomPasswordGenerator
 
         Console.WriteLine(password.ToString());
     }
+
+    private string EndMessage()
+    {
+        return "Thank You !";
+    }
 }
