@@ -5,7 +5,7 @@ namespace VasaCSharp.Random.Utilities;
 
 public static class PasswordGeneratorUtility
 {
-    public static void Generate(IPasswordGenerator passwordGenerator)
+    private static void Generate(IPasswordGenerator passwordGenerator)
     {
         // Grab the passwordLength from user Input.
         passwordGenerator.GetValidUserInput(out var passwordLength);           
