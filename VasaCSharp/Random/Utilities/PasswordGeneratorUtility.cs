@@ -1,3 +1,4 @@
+using System.Diagnostics;
 using VasaCSharp.Random.Interface;
 
 namespace VasaCSharp.Random.Utilities;
@@ -17,7 +18,7 @@ public static class PasswordGeneratorUtility
         Custom.WriteLine(Accessor.GetEndMessageMethod(randomPasswordGenerator));
     }
 
-    public static void Menu()
+    public static void Menu(IPasswordGenerator passwordGenerator)
     {
         var exit = false;
 
@@ -30,14 +31,21 @@ public static class PasswordGeneratorUtility
             Console.WriteLine("3. Exit");
             Console.WriteLine("Enter Your Choice: ");
 
-            if (int.TryParse(Console.ReadLine(), out var userSelection))
+            if (Enum.TryParse(Console.ReadLine(), out MenuOption userSelection))
             {
-                
-            }
-
-            if (userSelection == 3)
-            {
-                exit = true;
+                switch (userSelection)
+                {
+                    case MenuOption.GeneratePassword:
+                        Generate(passwordGenerator);
+                        break;
+                    case MenuOption.ShowHistory:
+                        break;
+                    case MenuOption.Exit:
+                        exit = true;
+                        break;
+                    default:
+                        return;
+                }
             }
         }
     }
