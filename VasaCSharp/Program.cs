@@ -10,6 +10,7 @@ namespace VasaCSharp
         {
             var serviceProvider = Startup.ConfigureServices();
             var passwordGenerator = serviceProvider.GetRequiredService<IPasswordGenerator>();
+            PasswordGeneratorUtility.Menu();
             PasswordGeneratorUtility.Generate(passwordGenerator);
         }
     }

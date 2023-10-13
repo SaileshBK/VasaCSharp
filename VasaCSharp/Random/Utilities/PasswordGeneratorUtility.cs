@@ -19,7 +19,7 @@ public static class PasswordGeneratorUtility
 
     public static void Menu()
     {
-        bool exit = false;
+        var exit = false;
 
         while (!exit)
         {
@@ -33,6 +33,11 @@ public static class PasswordGeneratorUtility
             if (int.TryParse(Console.ReadLine(), out var userSelection))
             {
                 
+            }
+
+            if (userSelection == 3)
+            {
+                exit = true;
             }
         }
     }
