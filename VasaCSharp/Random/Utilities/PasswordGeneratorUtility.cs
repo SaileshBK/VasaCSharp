@@ -16,4 +16,24 @@ public static class PasswordGeneratorUtility
         var randomPasswordGenerator = new PasswordGenerator();
         Custom.WriteLine(Accessor.GetEndMessageMethod(randomPasswordGenerator));
     }
+
+    public static void Menu()
+    {
+        bool exit = false;
+
+        while (!exit)
+        {
+            Console.Clear();
+            Console.WriteLine("Welcome To Password Generator Menu: ");
+            Console.WriteLine("1. Generate Password");
+            Console.WriteLine("2. View Password History");
+            Console.WriteLine("3. Exit");
+            Console.WriteLine("Enter Your Choice: ");
+
+            if (int.TryParse(Console.ReadLine(), out var userSelection))
+            {
+                
+            }
+        }
+    }
 }
