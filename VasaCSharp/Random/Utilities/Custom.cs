@@ -22,5 +22,4 @@ public static class Custom
         Console.WriteLine("3. Exit");
         Console.WriteLine("Enter Your Choice: ");
     }
-    
 }

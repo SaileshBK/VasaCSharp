@@ -19,9 +19,7 @@ public static class PasswordGeneratorUtility
 
     public static void Menu(IPasswordGenerator passwordGenerator)
     {
-        var exit = false;
-
-        while (!exit)
+        while (true)
         {
             Custom.Menu();
             if (Enum.TryParse(Console.ReadLine(), out MenuOption userSelection))
@@ -34,8 +32,7 @@ public static class PasswordGeneratorUtility
                     case MenuOption.ShowHistory:
                         break;
                     case MenuOption.Exit:
-                        exit = true;
-                        break;
+                        return;
                     default:
                         return;
                 }
