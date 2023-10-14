@@ -15,7 +15,6 @@ public static class Custom
 
     public static void Menu()
     {
-        Console.Clear();
         Console.WriteLine("Welcome To Password Generator Menu: ");
         Console.WriteLine("1. Generate Password");
         Console.WriteLine("2. View Password History");
