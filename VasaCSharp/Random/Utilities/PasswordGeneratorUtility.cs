@@ -23,13 +23,7 @@ public static class PasswordGeneratorUtility
 
         while (!exit)
         {
-            Console.Clear();
-            Console.WriteLine("Welcome To Password Generator Menu: ");
-            Console.WriteLine("1. Generate Password");
-            Console.WriteLine("2. View Password History");
-            Console.WriteLine("3. Exit");
-            Console.WriteLine("Enter Your Choice: ");
-
+            Custom.Menu();
             if (Enum.TryParse(Console.ReadLine(), out MenuOption userSelection))
             {
                 switch (userSelection)
