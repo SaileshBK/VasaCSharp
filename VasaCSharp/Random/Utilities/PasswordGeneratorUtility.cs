@@ -1,3 +1,4 @@
+using System.Xml;
 using VasaCSharp.Random.Interface;
 
 namespace VasaCSharp.Random.Utilities;
@@ -46,6 +47,11 @@ public static class PasswordGeneratorUtility
     private static void PasswordHistory()
     {
         Console.WriteLine("Here are your generated passwords:");
+        Console.WriteLine("----------------------------------");
+        Console.ForegroundColor = ConsoleColor.Green;
         _generatedPasswords.ForEach(Console.WriteLine);
+        Console.ResetColor();
+        Console.WriteLine("----------------------------------");
+
     }
 }
