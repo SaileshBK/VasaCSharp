@@ -51,8 +51,8 @@ public static class PasswordGeneratorUtility
         Console.WriteLine("----------------------------------");
         Console.ForegroundColor = ConsoleColor.Green;
         _generatedPasswords.ForEach(Console.WriteLine);
-        Console.ResetColor();
+        Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("----------------------------------");
-
+        Console.ResetColor();
     }
 }
