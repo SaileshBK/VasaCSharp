@@ -18,7 +18,7 @@ public static class PasswordGeneratorUtility
                         Generate(passwordGenerator);
                         break;
                     case MenuOption.ShowHistory:
-                        _generatedPasswords.ForEach(Console.WriteLine);
+                        PasswordHistory();
                         break;
                     case MenuOption.Exit:
                         // Testing New Way Of Calling Private Methods in .Net 8
@@ -41,5 +41,10 @@ public static class PasswordGeneratorUtility
         var password = passwordGenerator.GenerateRandomPassword(passwordLength);
         _generatedPasswords.Add(password);
         Custom.WriteLine(password);
+    }
+
+    private static void PasswordHistory()
+    {
+        _generatedPasswords.ForEach(Console.WriteLine);
     }
 }
