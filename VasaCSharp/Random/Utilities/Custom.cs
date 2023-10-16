@@ -12,4 +12,13 @@ public static class Custom
         // Reset the color to the default
         Console.ResetColor(); 
     }
+
+    public static void Menu()
+    {
+        Console.WriteLine("Welcome To Password Generator Menu: ");
+        Console.WriteLine("1. Generate Password");
+        Console.WriteLine("2. View Password History");
+        Console.WriteLine("3. Exit");
+        Console.WriteLine("Enter Your Choice: ");
+    }
 }
