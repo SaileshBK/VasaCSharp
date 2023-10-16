@@ -4,6 +4,7 @@ namespace VasaCSharp.Random.Utilities;
 
 public static class PasswordGeneratorUtility
 {
+    private static readonly List<string> _generatedPasswords = new List<string>(); 
     public static void Menu(IPasswordGenerator passwordGenerator)
     {
         while (true)
@@ -17,6 +18,7 @@ public static class PasswordGeneratorUtility
                         Generate(passwordGenerator);
                         break;
                     case MenuOption.ShowHistory:
+                        _generatedPasswords.ForEach(Console.WriteLine);
                         break;
                     case MenuOption.Exit:
                         // Testing New Way Of Calling Private Methods in .Net 8
@@ -36,6 +38,8 @@ public static class PasswordGeneratorUtility
         passwordGenerator.GetValidUserInput(out var passwordLength);           
                                                      
         // Generates password using Random Chars.
-        Custom.WriteLine(passwordGenerator.GenerateRandomPassword(passwordLength));
+        var password = passwordGenerator.GenerateRandomPassword(passwordLength);
+        _generatedPasswords.Add(password);
+        Custom.WriteLine(password);
     }
 }
