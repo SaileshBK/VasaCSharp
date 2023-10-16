@@ -45,6 +45,7 @@ public static class PasswordGeneratorUtility
 
     private static void PasswordHistory()
     {
+        Console.WriteLine("Here are your generated passwords:");
         _generatedPasswords.ForEach(Console.WriteLine);
     }
 }
