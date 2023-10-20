@@ -54,6 +54,7 @@ public static class PasswordGeneratorUtility
         // _generatedPasswords.ForEach(Console.WriteLine);
         
         // CollectionsMarshal.AsSpan() is more efficient for looping list than a traditional loop.
+        // Note: Use case only when the list is immutable.  
         foreach (var password in CollectionsMarshal.AsSpan(_generatedPasswords))
         {
             Console.WriteLine(password);
