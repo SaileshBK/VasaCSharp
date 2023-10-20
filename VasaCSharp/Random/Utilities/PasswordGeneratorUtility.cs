@@ -51,7 +51,6 @@ public static class PasswordGeneratorUtility
         Console.WriteLine("Here are your generated passwords:");
         Console.WriteLine("---------------------------------------");
         Console.ForegroundColor = ConsoleColor.Green;
-        // _generatedPasswords.ForEach(Console.WriteLine);
         
         // CollectionsMarshal.AsSpan() is more efficient for looping list than a traditional loop.
         // Note: Use case only when the list is immutable.  
