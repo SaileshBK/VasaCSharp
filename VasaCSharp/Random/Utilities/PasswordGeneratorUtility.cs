@@ -6,9 +6,9 @@ namespace VasaCSharp.Random.Utilities;
 
 public static class PasswordGeneratorUtility
 {
-    private static readonly List<string> _generatedPasswords = new List<string>(); 
     public static void Menu(IPasswordGenerator passwordGenerator)
     {
+        var generatedPassword = new List<string>();
         while (true)
         {
             Custom.Menu();
@@ -17,10 +17,10 @@ public static class PasswordGeneratorUtility
                 switch (userSelection)
                 {
                     case MenuOption.GeneratePassword:
-                        Generate(passwordGenerator);
+                        Generate(passwordGenerator, generatedPassword);
                         break;
                     case MenuOption.ShowHistory:
-                        PasswordHistory();
+                        PasswordHistory(generatedPassword);
                         break;
                     case MenuOption.Exit:
                         // Testing New Way Of Calling Private Methods in .Net 8
@@ -34,18 +34,18 @@ public static class PasswordGeneratorUtility
         }
     }
     
-    private static void Generate(IPasswordGenerator passwordGenerator)
+    private static void Generate(IPasswordGenerator passwordGenerator, List<string> generatedPassword)
     {
         // Grab the passwordLength from user Input.
         passwordGenerator.GetValidUserInput(out var passwordLength);           
                                                      
         // Generates password using Random Chars.
         var password = passwordGenerator.GenerateRandomPassword(passwordLength);
-        _generatedPasswords.Add(password);
+        generatedPassword.Add(password);
         Custom.WriteLine(password);
     }
 
-    private static void PasswordHistory()
+    private static void PasswordHistory(List<string> generatedPassword)
     {
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("Here are your generated passwords:");
@@ -54,7 +54,7 @@ public static class PasswordGeneratorUtility
         
         // CollectionsMarshal.AsSpan() is more efficient for looping list than a traditional loop.
         // Note: Use case only when the list is immutable.  
-        foreach (var password in CollectionsMarshal.AsSpan(_generatedPasswords))
+        foreach (var password in CollectionsMarshal.AsSpan(generatedPassword))
         {
             Console.WriteLine(password);
         }
