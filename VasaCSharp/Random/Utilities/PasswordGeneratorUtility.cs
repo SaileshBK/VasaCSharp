@@ -1,3 +1,4 @@
+using System.Runtime.InteropServices;
 using System.Xml;
 using VasaCSharp.Random.Interface;
 
@@ -50,7 +51,13 @@ public static class PasswordGeneratorUtility
         Console.WriteLine("Here are your generated passwords:");
         Console.WriteLine("---------------------------------------");
         Console.ForegroundColor = ConsoleColor.Green;
-        _generatedPasswords.ForEach(Console.WriteLine);
+        // _generatedPasswords.ForEach(Console.WriteLine);
+        
+        // CollectionsMarshal.AsSpan() is more efficient for looping list than a traditional loop.
+        foreach (var password in CollectionsMarshal.AsSpan(_generatedPasswords))
+        {
+            Console.WriteLine(password);
+        }
         Console.ForegroundColor = ConsoleColor.Cyan;
         Console.WriteLine("--------------------------------------");
         Console.ResetColor();
