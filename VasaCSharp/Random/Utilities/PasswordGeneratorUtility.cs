@@ -1,11 +1,12 @@
 using System.Runtime.InteropServices;
 using VasaCSharp.Random.Interface;
+using VasaCSharp.Random.Services;
 
 namespace VasaCSharp.Random.Utilities;
 
 public static class PasswordGeneratorUtility
 {
-    public static void Menu(IPasswordGenerator passwordGenerator)
+    public static void Menu(IPasswordGenerator passwordGenerator, IRedisCacheService redis)
     {
         var generatedPassword = new List<string>();
         while (true)
@@ -16,7 +17,7 @@ public static class PasswordGeneratorUtility
                 switch (userSelection)
                 {
                     case MenuOption.GeneratePassword:
-                        Generate(passwordGenerator, generatedPassword);
+                        Generate(passwordGenerator, generatedPassword, redis);
                         break;
                     case MenuOption.ShowHistory:
                         PasswordHistory(generatedPassword);
@@ -33,7 +34,7 @@ public static class PasswordGeneratorUtility
         }
     }
     
-    private static void Generate(IPasswordGenerator passwordGenerator, List<string> generatedPassword)
+    private static void Generate(IPasswordGenerator passwordGenerator, List<string> generatedPassword, IRedisCacheService redisCacheService)
     {
         // Grab the passwordLength from user Input.
         passwordGenerator.GetValidUserInput(out var passwordLength);           
@@ -41,6 +42,8 @@ public static class PasswordGeneratorUtility
         // Generates password using Random Chars.
         var password = passwordGenerator.GenerateRandomPassword(passwordLength);
         generatedPassword.Add(password);
+        redisCacheService.SetCacheValueAsync("test", password);
+        
         Custom.WriteLine(password);
     }
 
